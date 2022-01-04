@@ -12,8 +12,8 @@
     "test:watch": "npm test -- --watch"
   },
   "engines": {
-    "node": "6.10.0",
-    "npm": "3.10.10"
+    "node": "12.13.1",
+    "npm": "6.12.1"
   },
   "dependencies": {
     "@babel/core": "^7.1.0",

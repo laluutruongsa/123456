@@ -3,7 +3,7 @@ module.exports = {
 	'options': {
 		//'user':   'root',
 		//'pass':   '123',
-		'dbName': 'server',
+		'dbName': 'myFirstDatabase',
 		'useNewUrlParser': true,
 		'useUnifiedTopology': true,
 		//'autoIndex':       false,

@@ -24,7 +24,7 @@ var morgan = require('morgan');
 // Setting & Connect to the Database
 let configDB = require('./config/database');
 let mongoose = require('mongoose');
-// mongoose.set('debug', true);
+mongoose.set('debug', true);
 
 require('mongoose-long')(mongoose); // INT 64bit
 

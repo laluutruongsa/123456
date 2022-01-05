@@ -1,9 +1,9 @@
 module.exports = {
-	'url': 'mongodb://localhost:27017',
+	'url': 'mongodb+srv://root:123@cluster0.e70td.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
 	'options': {
 		//'user':   'root',
-		//'pass':   '',
-		'dbName': 'server',
+		//'pass':   '123',
+		'dbName': 'myFirstDatabase',
 		'useNewUrlParser': true,
 		'useUnifiedTopology': true,
 		//'autoIndex':       false,

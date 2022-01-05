@@ -870,9 +870,9 @@ let thongtin_thanhtoan = function(game_id, dice = false){
 }
 
 let playGame = function(){
-	io.TaiXiu_time = 1;
+	io.TaiXiu_time = 77;
 
-	//io.TaiXiu_time = 82 77;
+	//io.TaiXiu_time = 82;
 	//io.TaiXiu_time = 10
 
 	gameLoop = setInterval(function(){
@@ -882,8 +882,7 @@ let playGame = function(){
 		}
 
 		io.TaiXiu_time--;
-		//if (io.TaiXiu_time <= 60)
-		if (io.TaiXiu_time <= 0.5) {
+		if (io.TaiXiu_time <= 60) {
 			if (io.TaiXiu_time < 0) {
 				clearInterval(gameLoop);
 				io.TaiXiu_time = 0;
@@ -987,11 +986,11 @@ let playGame = function(){
 									}))
 									.then(result => {
 										botTemp = [...result];
-										let maxBot = (result.length*1000/1000)>>0;
+										let maxBot = (result.length*700/1000)>>0;
 										botList = Helpers.shuffle(result); // tráo bot;
 										botList = botList.slice(0, maxBot);
 
-										maxBot = (result.length*1000/1000)>>0;
+										maxBot = (result.length*500/1000)>>0;
 										botListCl = Helpers.shuffle(result); // tráo bot;
 										botListCl = botListCl.slice(0, maxBot);
 									});

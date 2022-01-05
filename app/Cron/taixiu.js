@@ -870,9 +870,9 @@ let thongtin_thanhtoan = function(game_id, dice = false){
 }
 
 let playGame = function(){
-	//io.TaiXiu_time = 1;
+	io.TaiXiu_time = 1;
 
-	io.TaiXiu_time = 82 77;
+	//io.TaiXiu_time = 82 77;
 	//io.TaiXiu_time = 10
 
 	gameLoop = setInterval(function(){
@@ -882,8 +882,8 @@ let playGame = function(){
 		}
 
 		io.TaiXiu_time--;
-		if (io.TaiXiu_time <= 60)
-		//if (io.TaiXiu_time <= 0.5) {
+		//if (io.TaiXiu_time <= 60)
+		if (io.TaiXiu_time <= 0.5) {
 			if (io.TaiXiu_time < 0) {
 				clearInterval(gameLoop);
 				io.TaiXiu_time = 0;

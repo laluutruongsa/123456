@@ -1,0 +1,13 @@
+node_modules/
+.env
+atlas-credentials.env
+.DS_Store
+npm-debug.log
+logs/
+public/uploads/
+uploads/
+*.log
+coverage/
+.env.local
+.vscode/
+.idea/

@@ -1,11 +1,10 @@
 module.exports = {
-	'url': 'mongodb+srv://root:123@cluster0.e70td.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+	// Use environment variable when available (Render, Vercel, etc.).
+	// Fallback is set to the provided cluster URI for convenience.
+	'url': process.env.MONGODB_URI || 'mongodb+srv://laluutruongsa_db_user:qGKu9bLYNScbSArC@cluster0.qus7qkd.mongodb.net/?appName=Cluster0',
 	'options': {
-		//'user':   'root',
-		//'pass':   '123',
-		'dbName': 'myFirstDatabase',
+		'dbName': process.env.MONGODB_DBNAME || 'myFirstDatabase',
 		'useNewUrlParser': true,
 		'useUnifiedTopology': true,
-		//'autoIndex':       false,
 	},
 };

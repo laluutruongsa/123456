@@ -1,6 +1,7 @@
 let tab_NapThe = require('../../Models/NapThe');
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://127.0.0.1:27017";
+var configDB = require('../../../config/database');
+var url = configDB.url;
 module.exports = function (req, res) {
     //fs.readFile(path.dirname(path.dirname(__dirname)) + '/config/sys.json', 'utf8', (err, data)=>{
     let nhan = req.query.menhGiaThuc;
@@ -19,15 +20,15 @@ module.exports = function (req, res) {
                 clientUID = result.uid;
             }
         });
-        MongoClient.connect(url, function(err, db) {
-            if (err) throw err;
-            var dbo = db.db("admin");
-            dbo.collection("userinfos").findOneAndUpdate({'id':clientUID}, {$inc:{red:nhanInt}},function(err,result){
-                if(err) throw err;
-                console.log(' nhan duoc '+ nhanInt);
-                db.close();
-            });
-          });
+                MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function(err, client) {
+                        if (err) throw err;
+                        var dbo = client.db("admin");
+                        dbo.collection("userinfos").findOneAndUpdate({'id':clientUID}, {$inc:{red:nhanInt}},function(err,result){
+                                if(err) throw err;
+                                console.log(' nhan duoc '+ nhanInt);
+                                client.close();
+                        });
+                    });
     }
     else {
         tab_NapThe.updateOne({ 'requestId': requestId }, { $set: { nhan: 0, status: 2 } }).exec();

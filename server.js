@@ -31,11 +31,11 @@ require('mongoose-long')(mongoose); // INT 64bit
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.connect(configDB.url, configDB.options)
+    .then(function() {
+        console.log('Connected to MongoDB');
+    })
     .catch(function(error) {
-        if (error)
-            console.log('Connect to MongoDB failed', error);
-        else
-            console.log('Connect to MongoDB success');
+        console.log('Connect to MongoDB failed', error);
     });
 
 // kết nối tới database
@@ -73,6 +73,11 @@ require('./config/Cron')();
 require('./update')();
 
 require('./app/Telegram/Telegram')(TelegramBot); // Telegram Bot
+
+// Healthcheck for Render / Vercel or load balancers
+app.get('/health', function(req, res) {
+    res.sendStatus(200);
+});
 
 app.listen(port, function() {
     console.log("Server listen on port ", port);

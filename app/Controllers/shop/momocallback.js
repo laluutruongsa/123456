@@ -1,5 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
-var url = "mongodb://127.0.0.1:27017";
+var configDB = require('../../../config/database');
+var url = configDB.url;
 module.exports = function (req, res) {
     fs.readFile(path.dirname(path.dirname(__dirname)) + '/config/sys.json', 'utf8', (err, data)=>{
     let noidung = req.query.chargeCode;
@@ -11,9 +12,9 @@ module.exports = function (req, res) {
     if (config[0] == 'Zonvip') {
             console.log("Server the tra ve " + requestId + "trang thai" + status + "thuc nhan duoc " + nhan);
             if (status == 'success') {
-                MongoClient.connect(url, function (err, db) {
+                MongoClient.connect(url, { useNewUrlParser: true, useUnifiedTopology: true }, function (err, client) {
                     if (err) throw err;
-                    var dbo = db.db("admin");
+                    var dbo = client.db("admin");
                     dbo.collection("userinfos").findOneAndUpdate({ 'name': config[1].trim()}, { $inc: { red: nhanInt } }, function (err, result) {
                         if (err) throw err;
                         else {
@@ -23,7 +24,7 @@ module.exports = function (req, res) {
                          }
                         }
 
-                        db.close();
+                        client.close();
                     });
                 });
             }

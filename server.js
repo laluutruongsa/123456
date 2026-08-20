@@ -30,6 +30,9 @@ require('mongoose-long')(mongoose); // INT 64bit
 
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
+mongoose.connection.on('error', function(error) {
+    console.log('MongoDB connection error', error);
+});
 mongoose.connect(configDB.url, configDB.options)
     .then(function() {
         console.log('Connected to MongoDB');
@@ -79,6 +82,6 @@ app.get('/health', function(req, res) {
     res.sendStatus(200);
 });
 
-app.listen(port, function() {
+app.listen(port, '0.0.0.0', function() {
     console.log("Server listen on port ", port);
 });

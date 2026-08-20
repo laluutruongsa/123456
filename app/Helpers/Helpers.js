@@ -1,5 +1,5 @@
 
-let bcrypt = require('bcrypt');
+let bcrypt = require('bcryptjs');
 
 // mã hóa pass
 let generateHash = function(password) {

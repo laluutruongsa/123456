@@ -6,7 +6,7 @@ module.exports = function(req, res, next) {
         authorization.startsWith('Bearer ') || token) {
         const token = authorization ? authorization.slice('Bearer '.length) : token;
         var jwt = require('jsonwebtoken');
-        var bcrypt = require('bcrypt-nodejs');
+        var bcrypt = require('bcryptjs');
 
         var cert = config.secret;
         jwt.verify(token, cert, function(err, decoded) {

@@ -37,8 +37,8 @@
   <!--<link rel="apple-touch-icon" href=".png" />-->
   <!--<link rel="apple-touch-icon-precomposed" href=".png" />-->
 
-  <link rel="stylesheet" type="text/css" href="style-mobile.css"/>
-  <link rel="icon" href="favicon.ico"/>
+  <link rel="stylesheet" type="text/css" href="/web/style-mobile.css"/>
+  <link rel="icon" href="/web/favicon.ico"/>
   <script src="./source/jquery-3.3.1.min.js.download"></script>
   <script type="text/javascript">
     var isMobile = {
@@ -84,9 +84,9 @@
     </div>
   </div>
 
-<script src="src/settings.js" charset="utf-8"></script>
+<script src="/web/src/settings.js" charset="utf-8"></script>
 
-<script src="main.js" charset="utf-8"></script>
+<script src="/web/main.js" charset="utf-8"></script>
   <!-- Smartsupp Live Chat script -->
 <!--  <script type="text/javascript">-->
 <!--    var _smartsupp = _smartsupp || {};-->
@@ -111,7 +111,7 @@
 
     var cocos2d = document.createElement('script');
     cocos2d.async = true;
-    cocos2d.src = window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.js';
+    cocos2d.src = '/web/' + (window._CCSettings.debug ? 'cocos2d-js.js' : 'cocos2d-js-min.js');
 
     var engineLoaded = function () {
         document.body.removeChild(cocos2d);

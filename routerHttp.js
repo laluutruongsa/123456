@@ -1,6 +1,15 @@
 // Router HTTP / HTTPS
 var mobile = require('is-mobile');
+var path = require('path');
 module.exports = function(app, redT) {
+    app.use('/web', function(req, res, next) {
+        if (req.path === '/' || req.path === '') {
+            return res.sendFile(path.join(__dirname, 'public', 'web', 'index.html'));
+        }
+        return next();
+    });
+    app.use('/web', require('express').static(path.join(__dirname, 'public', 'web')));
+
     // Home
     app.get('/', function(req, res) {
         if (mobile({ ua: req })) {
@@ -9,11 +18,14 @@ module.exports = function(app, redT) {
             return res.redirect('/web/');
         }
     });
+    app.get('/web', function(req, res) {
+        return res.redirect('/web/');
+    });
     app.get('/web/', function(req, res) {
         if (mobile({ ua: req })) {
             return res.redirect('/mobile/');
         } else {
-            return res.render('index');
+            return res.sendFile(path.join(__dirname, 'public', 'web', 'index.html'));
         }
     });
     app.get('/mobile/', function(req, res) {
